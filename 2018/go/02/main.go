@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"os"
 	"strings"
@@ -28,25 +29,28 @@ func getCharCountMap(input string) map[byte]int {
 	return results
 }
 
-func solve(input []string) int {
-	twoCount, threeCount := 0, 0
-	for i := range input {
-		isTwo, isThree := false, false
-		charCountMap := getCharCountMap(input[i])
-		for _, count := range charCountMap {
-			if count == 2 && !isTwo {
-				twoCount++
-				isTwo = !isTwo
-			}
-			if count == 3 && !isThree {
-				threeCount++
-				isThree = !isThree
+func solve(input []string) (string, error) {
+	for i := range input[0] {
+		letterMap := make(map[string]int)
+		for j, value := range input {
+			tempString := value[0:i] + value[i+1:]
+			_, ok := letterMap[tempString]
+			if ok {
+				return tempString, nil
+			} else {
+				letterMap[tempString] = j
 			}
 		}
 	}
-	return twoCount * threeCount
+	return "", errors.New("No result found")
 }
 
 func main() {
-	fmt.Println(solve(getStringInput()))
+	result, err := solve(getStringInput())
+	if err != nil {
+		fmt.Println(err)
+		panic(1)
+	} else {
+		fmt.Println(result)
+	}
 }

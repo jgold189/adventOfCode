@@ -5,10 +5,13 @@ import (
 )
 
 func TestSolveInput1(t *testing.T) {
-	input := [...]string{"abcdef", "bababc", "abbcde", "abcccd", "aabcdd", "abcdee", "ababab"}
-	result := solve(input[:])
-	answer := 12
+	input := [...]string{"abcde", "fghij", "klmno", "pqrst", "fguij", "axcye", "wvxyz"}
+	result, err := solve(input[:])
+	answer := "fgij"
+	if err != nil {
+		t.Fatalf(`solve returned an error: %s`, err)
+	}
 	if result != answer {
-		t.Fatalf(`solve is wrong. Wanted %d, got %d`, answer, result)
+		t.Fatalf(`solve is wrong. Wanted %s, got %s`, answer, result)
 	}
 }
