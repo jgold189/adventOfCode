@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"os"
 	"strconv"
@@ -24,6 +25,7 @@ func atoiWithPanic(s string) int {
 	}
 }
 
+// claimId, xOffset, yOffset, width, height
 func splitInput(input string) (int, int, int, int, int) {
 	// #123 @ 3,2: 5x4
 	fields := strings.Fields(input)
@@ -32,28 +34,42 @@ func splitInput(input string) (int, int, int, int, int) {
 	return atoiWithPanic(fields[0][1:]), atoiWithPanic(offsetSlice[0]), atoiWithPanic(offsetSlice[1][:len(offsetSlice[1])-1]), atoiWithPanic(sizeSlice[0]), atoiWithPanic(sizeSlice[1])
 }
 
-func solve(input []string) int {
+func solve(input []string) (int, error) {
 	data := [1200][1200]int{}
+	uniqueMap := make(map[int]bool)
 	for _, v := range input {
 		// claimId, xOffset, yOffset, width, height
-		_, xOffset, yOffset, width, height := splitInput(v)
+		claimId, xOffset, yOffset, width, height := splitInput(v)
 		for i := xOffset; i < xOffset+width; i++ {
 			for j := yOffset; j < yOffset+height; j++ {
-				data[i][j]++
+				if data[i][j] != 0 {
+					uniqueMap[claimId] = false
+					uniqueMap[data[i][j]] = false
+				} else {
+					data[i][j] = claimId
+					_, ok := uniqueMap[claimId]
+					if !ok {
+						uniqueMap[claimId] = true
+					}
+				}
+
 			}
 		}
 	}
-	count := 0
-	for i := 0; i < len(data); i++ {
-		for j := 0; j < len(data[0]); j++ {
-			if data[i][j] > 1 {
-				count++
-			}
+	for claimId, v := range uniqueMap {
+		if v {
+			return claimId, nil
 		}
 	}
-	return count
+	return 0, errors.New("No unique claimId found")
 }
 
 func main() {
-	fmt.Println(solve(getStringInput()))
+	result, err := solve(getStringInput())
+	if err != nil {
+		panic(err)
+	} else {
+		fmt.Println(result)
+	}
+
 }
