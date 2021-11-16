@@ -113,22 +113,18 @@ func solve(input []string) int {
 	}
 
 	var mostTiredGuard int
-	mostTiredGuardSleepLength := -1
-	for guardId, v := range guardMinSleepCount {
-		slept := sumSlice(v)
-		if slept > mostTiredGuardSleepLength {
-			mostTiredGuardSleepLength = slept
-			mostTiredGuard = guardId
-		}
-	}
 	var mostSleptMin int
 	mostSleptAmount := -1
-	for min, v := range guardMinSleepCount[mostTiredGuard] {
-		if v > mostSleptAmount {
-			mostSleptAmount = v
-			mostSleptMin = min
+	for guardId := range guardMinSleepCount {
+		for min, v := range guardMinSleepCount[guardId] {
+			if v > mostSleptAmount {
+				mostSleptAmount = v
+				mostSleptMin = min
+				mostTiredGuard = guardId
+			}
 		}
 	}
+
 	return mostSleptMin * mostTiredGuard
 }
 

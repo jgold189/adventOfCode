@@ -24,7 +24,7 @@ func TestSolveInput1(t *testing.T) {
 		"[1518-11-05 00:45] falls asleep",
 		"[1518-11-05 00:55] wakes up"}
 	result := solve(input[:])
-	answer := 240
+	answer := 4455
 	if result != answer {
 		t.Fatalf(`solve is wrong. Wanted %d, got %d`, answer, result)
 	}
