@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"strings"
 )
 
 func getStringInput() []byte {
@@ -28,6 +29,7 @@ func checkEqualButDiffCase(a, b byte) bool {
 	}
 }
 
+// PART 2 NOTE: USE INTELLIGENT BRUTEFORCING. REMOVE THE LETTER THAT APPEARS THE MOST FIRST AND WORK FROM THERE.
 func solve(input []byte) int {
 	actionTaken := false
 	result := make([]byte, 0, max(len(input)-25, len(input)))
@@ -48,6 +50,21 @@ func solve(input []byte) int {
 	}
 }
 
+func filterString(input []byte, lowerCaseByte byte) []byte {
+	return []byte(strings.ReplaceAll(strings.ReplaceAll(string(input), string(lowerCaseByte), ""), string(lowerCaseByte-32), ""))
+}
+
+func solveHelper(input []byte) int {
+	var lowestCount uint32 = ^uint32(0)
+	for i := 97; i <= 122; i++ {
+		count := solve(filterString(input, byte(i)))
+		if count < int(lowestCount) {
+			lowestCount = uint32(count)
+		}
+	}
+	return int(lowestCount)
+}
+
 func main() {
-	fmt.Println(solve(getStringInput()))
+	fmt.Println(solveHelper(getStringInput()))
 }
