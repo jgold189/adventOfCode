@@ -28,10 +28,15 @@ object Day02 {
         if (intCode.apply(opCodeIndex + 4) == 99) intCode else runIntCodeProgram(intCode, opCodeIndex + 4)
     }
 
-    def solveDay() = {
-        // TODO: Before running the program, replace position 1 with the value 12 and replace position 2 with the value 2.
-        val initialModdedIntCode = Util.getIntCodeInput("02.txt").patch(1, List(12, 2), 2)
-        runIntCodeProgram(initialModdedIntCode, 0).apply(0)
+    def solveDay(): Int = {
+        val initialIntCode = Util.getIntCodeInput("02.txt")
+        for (noun <- 0 to 99) {
+            for (verb <- 0 to 99) {
+                val result = runIntCodeProgram(initialIntCode.patch(1, List(noun, verb), 2), 0).apply(0)
+                if (result == 19690720) return 100 * noun + verb
+            }
+        }
+        throw new Exception("No correct result found")
     }
 
 }
