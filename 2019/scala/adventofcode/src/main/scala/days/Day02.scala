@@ -1,3 +1,7 @@
-class Day02 {
+object Day02 {
+
+    def solveDay() = {
+        2
+    }
 
 }
