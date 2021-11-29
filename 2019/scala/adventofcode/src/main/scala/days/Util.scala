@@ -8,4 +8,9 @@ object Util {
         bufferStream.close()
         lineList
     }
+
+    def getIntCodeInput(fileName: String): List[Int] = {
+        getInput(fileName).apply(0).split(",").toList.map(x => x.toInt)
+    }
+
 }
