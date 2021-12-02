@@ -1,15 +1,16 @@
 from aocUtil import *
 
 def solve(inputs):
-    x, y = 0, 0
+    x, y, aim = 0, 0, 0
     for line in inputs:
         command, amount = line.split(" ")
         if command == "forward":
             x += int(amount)
+            y += aim * int(amount)
         elif command == "down":
-            y += int(amount)
+            aim += int(amount)
         elif command == "up":
-            y -= int(amount)
+            aim -= int(amount)
         else:
             raise ValueError("The value for command was not expected")
     return x * y
