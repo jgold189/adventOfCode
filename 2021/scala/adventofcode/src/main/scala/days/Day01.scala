@@ -5,7 +5,7 @@ object Day01 {
     }
 
     def solveDay() = {
-        depthChange(Util.getInput("01.txt").map(_.toInt))
+        depthChange(Util.getInput("01").map(_.toInt))
     }
 
 }

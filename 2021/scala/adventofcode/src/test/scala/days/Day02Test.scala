@@ -1,7 +1,8 @@
 import org.scalatest.funsuite.AnyFunSuite
 
 class Day02Test extends AnyFunSuite {
-      test("Day02.runIntCodeProgram") {
-          //assert(Day02.runIntCodeProgram(List(1,9,10,3,2,3,11,0,99,30,40,50), 0) === List(3500,9,10,70,2,3,11,0,99,30,40,50))
+      test("Day02.calcSubPos") {
+          val data = Vector("forward 5","down 5","forward 8","up 3","down 8","forward 2")
+          assert(Day02.calcSubPos(data) === 150)
       }
 }
