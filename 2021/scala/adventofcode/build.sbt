@@ -13,7 +13,7 @@ scalaVersion := "2.13.7"
 
 // It's possible to define many kinds of settings, such as:
 
-name := "adventOfCode2019"
+name := "adventOfCode2021"
 version := "1.0"
 
 // Note, it's not required for you to define these three settings. These are
