@@ -44,10 +44,17 @@ def getBingoInputs(rawData):
 
 def solve(inputs):
     drawOrder, boards = getBingoInputs(inputs)
+    earlyWins = []
     for num in drawOrder:
-        for board in boards:
-            if board.markNumber(num):
-                return board.getScore(num)
+        for i in reversed(earlyWins):
+            del boards[i]
+        earlyWins = []
+        for i in range(len(boards)):
+            if boards[i].markNumber(num):
+                if len(boards) == 1:
+                    return boards[i].getScore(num)
+                else:
+                    earlyWins.append(i)
     raise Exception("No winning board found")
 
 

@@ -22,4 +22,4 @@ def test_solve():
         "22 11 13  6  5",
         " 2  0 12  3  7"
     ]
-    assert solve(input) == 4512
+    assert solve(input) == 1924
