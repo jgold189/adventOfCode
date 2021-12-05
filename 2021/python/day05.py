@@ -2,13 +2,9 @@ from aocUtil import *
 
 def getAllCoords(line):
     coords = []
-    points = line.split(" -> ")
-    firstPoint = points[0].split(",")
-    secondPoint = points[1].split(",")
-    x1 = int(firstPoint[0])
-    y1 = int(firstPoint[1])
-    x2 = int(secondPoint[0])
-    y2 = int(secondPoint[1])
+    firstPoint, secondPoint = [x.split(",") for x in line.split(" -> ")]
+    x1, y1 = [int(x) for x in firstPoint]
+    x2, y2 = [int(x) for x in secondPoint]
     if x1 == x2:
         for i in range(min(y1, y2), max(y1, y2) + 1):
             coords.append(f"{x1},{i}")
