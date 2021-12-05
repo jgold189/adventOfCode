@@ -15,8 +15,12 @@ def getAllCoords(line):
     elif y1 == y2:
         for i in range(min(x1, x2), max(x1, x2) + 1):
             coords.append(f"{i},{y1}")
-    #else:
-    #    1
+    else:
+        diff = abs(x1 - x2)
+        xNeg = -1 if x1 - x2 > 0 else 1
+        yNeg = -1 if y1 - y2 > 0 else 1
+        for i in range(0, diff + 1):
+            coords.append(f"{x1 + (i * xNeg)},{y1 + (i * yNeg)}")
     
     return coords
 
