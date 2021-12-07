@@ -6,3 +6,6 @@ def getInputs(dayString):
 
 def getIntInputs(dayString):
     return [int(x) for x in getInputs(dayString)]
+
+def getIntListInput(dayString):
+    return [int(x) for x in getInputs(dayString)[0].split(",")]
