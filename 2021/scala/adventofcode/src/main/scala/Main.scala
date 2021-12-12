@@ -1,11 +1,12 @@
 object Main extends App {
 
     val days = Map(
-        1 -> Day01.solveDay(),
-        2 -> Day02.solveDay(),
-        3 -> Day03.solveDay(),
-        4 -> Day04.solveDay(),
-        5 -> Day05.solveDay()
+        1 -> Day01.solveDay,
+        2 -> Day02.solveDay,
+        3 -> Day03.solveDay,
+        4 -> Day04.solveDay,
+        5 -> Day05.solveDay,
+        6 -> Day06.solveDay
         )
 
     if (args.length != 1) {
