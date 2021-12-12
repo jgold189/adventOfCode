@@ -28,7 +28,7 @@ object Day05 {
         inputs.flatMap(mapLineToPoints(_)).groupMapReduce(identity)(_ => 1)(_ + _).filter(_._2 >= 2).size
     }
 
-    def solveDay(): Int = {
+    def solveDay: Int = {
         getOverlappingPoints(Util.getInput("05"))
     }
 }

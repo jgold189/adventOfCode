@@ -6,7 +6,8 @@ object Main extends App {
         3 -> Day03.solveDay,
         4 -> Day04.solveDay,
         5 -> Day05.solveDay,
-        6 -> Day06.solveDay
+        6 -> Day06.solveDay,
+        7 -> Day07.solveDay
         )
 
     if (args.length != 1) {

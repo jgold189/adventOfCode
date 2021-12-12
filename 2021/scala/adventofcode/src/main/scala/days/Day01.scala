@@ -4,7 +4,7 @@ object Day01 {
         input.sliding(3, 1).map(_.sum).sliding(2, 1).filter(x => x(1) > x(0)).length
     }
 
-    def solveDay() = {
+    def solveDay = {
         depthChange(Util.getInput("01").map(_.toInt))
     }
 

@@ -27,7 +27,7 @@ object Day04 {
         }
     }
 
-    def solveDay(): Int = {
+    def solveDay: Int = {
         val (draws, boards) = getBingoInput(Util.getInput("04"))
         // A board can't win until at least the 5th number
         val finalBoards = boards.map(playBingoBoard(draws, _, 4)).sortBy(_.pos)

@@ -36,7 +36,7 @@ object Day03 {
         parseInt(oxy, 2) * parseInt(co2, 2)
     }
 
-    def solveDay(): Int = {
+    def solveDay: Int = {
         // getGammaEpsilonRate(Util.getInput("03"))
         getLifeSupportRating(Util.getInput("03"))
     }

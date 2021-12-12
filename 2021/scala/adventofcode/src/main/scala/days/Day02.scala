@@ -18,7 +18,7 @@ object Day02 {
         x * y
     }
 
-    def solveDay(): Int = {
+    def solveDay: Int = {
         calcSubPos(Util.getInput("02"))
     }
 
