@@ -4,7 +4,8 @@ object Main extends App {
         1 -> Day01.solveDay(),
         2 -> Day02.solveDay(),
         3 -> Day03.solveDay(),
-        4 -> Day04.solveDay()
+        4 -> Day04.solveDay(),
+        5 -> Day05.solveDay()
         )
 
     if (args.length != 1) {
