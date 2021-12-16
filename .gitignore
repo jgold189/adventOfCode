@@ -47,6 +47,13 @@ target/
 *.tar.gz
 *.rar
 
+.metals/
+.bloops/
+.bloop/
+.vscode/
+.ammonite/
+metals.sbt
+
 # Elixir
 /_build
 /cover

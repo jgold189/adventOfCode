@@ -1,8 +1,10 @@
 import org.scalatest.funsuite.AnyFunSuite
 
 class Day07Test extends AnyFunSuite {
-      test("Day07.") {
-          val data = Vector("3,4,3,1,2")
-          //assert(Day06.solveHelper(data, 18) === 26)
+      test("Day07.calcFuel") {
+          val data = Vector(16,1,2,0,4,2,7,1,2,14)
+          assert(Day07.calcFuelMedian(data) === 37)
+
+          assert(Day07.calcFuelMeanExp(data) === 168)
       }
 }

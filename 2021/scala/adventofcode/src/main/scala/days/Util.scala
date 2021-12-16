@@ -8,4 +8,8 @@ object Util {
         lineList
     }
 
+    def getOneLineIntInput(fileName: String): Vector[Int] = {
+        getInput(fileName).apply(0).split(",").map(_.toInt).toVector
+    }
+
 }
